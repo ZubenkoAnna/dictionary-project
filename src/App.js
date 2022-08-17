@@ -1,10 +1,12 @@
+import React from "react";
+import Search from "./Search";
 import "./App.css";
 
 export default function App() {
   return (
     <div>
       <header>
-        <button className="btn btn-success">Search</button>
+        <Search />
       </header>
     </div>
   );
