@@ -1,12 +1,22 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 import "./Search.css";
 
 export default function Search() {
   let [keyworld, setKeyword] = useState(null);
+
+  function handelResponse(response) {
+    console.log(response.data[0]);
+  }
+
   function searchWord(event) {
     event.preventDefault();
-    alert(`Searching ${keyworld}`);
+
+    // documentation https://dictionaryapi.dev/
+
+    let apiURL = `https://api.dictionaryapi.dev/api/v2/entries/en/${keyworld}`;
+    axios.get(apiURL).then(handelResponse);
   }
 
   function handelSubmitWord(event) {
@@ -23,7 +33,7 @@ export default function Search() {
             className="form-control"
             onChange={handelSubmitWord}
           />
-          <button class="btn btn-outline-secondary" type="button">
+          <button className="btn btn-outline-secondary" type="button">
             Search
           </button>
         </form>
