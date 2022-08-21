@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Result from "./Result";
 
 import "./Search.css";
 
 export default function Search() {
   let [keyworld, setKeyword] = useState(null);
+  let [result, setResult] = useState(null);
 
   function handelResponse(response) {
-    console.log(response.data[0]);
+    setResult(response.data[0]);
   }
 
   function searchWord(event) {
@@ -38,6 +40,7 @@ export default function Search() {
           </button>
         </form>
       </div>
+      <Result results={result} />
     </div>
   );
 }
