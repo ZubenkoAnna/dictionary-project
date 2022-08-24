@@ -10,6 +10,7 @@ export default function Result(props) {
     return (
       <div>
         <h2>{props.results.word}</h2>
+
         {props.results.phonetics.map(function (phonetic, index) {
           return (
             <div key={index}>
@@ -22,7 +23,7 @@ export default function Result(props) {
           return (
             <div key={index}>
               <Meaning meaning={meaning} />
-              <Synonyms results={meaning.synonyms} />
+              <Synonyms result={meaning} />
               <Antonyms result={meaning.antonyms} />
             </div>
           );
