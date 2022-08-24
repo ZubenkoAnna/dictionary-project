@@ -1,0 +1,9 @@
+.synonyms li {
+  display: inline-block;
+  padding-right: 24px;
+}
+
+.synonyms {
+  padding-left: 0;
+  padding-top: 24px;
+}

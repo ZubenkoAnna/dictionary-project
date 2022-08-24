@@ -28,16 +28,27 @@ export default function Search() {
   return (
     <div className="container">
       <div className="Search">
-        <form className="input-group mb-3" onSubmit={searchWord}>
-          <input
-            placeholder="Enter a world"
-            type="search"
-            className="form-control"
-            onChange={handelSubmitWord}
-          />
-          <button className="btn btn-outline-secondary" type="button">
-            Search
-          </button>
+        <h3>What do you want to search?</h3>
+        <form onSubmit={searchWord}>
+          <div className="row">
+            <span className="col-sm-9">
+              <input
+                type="search"
+                placeholder="Type a word.."
+                autoFocus="on"
+                autoComplete="off"
+                className="form-control"
+                onChange={handelSubmitWord}
+              />
+            </span>
+            <span className="col-sm-3">
+              <input
+                type="submit"
+                value="Search"
+                className="form-control btn btn-primary"
+              />
+            </span>
+          </div>
         </form>
       </div>
       <Result results={result} />
