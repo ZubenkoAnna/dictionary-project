@@ -6,8 +6,6 @@ import Synonyms from "./Synonyms";
 import "./Meaning.css";
 
 export default function Meaning(props) {
-  console.log(props.meaning);
-
   return (
     <div>
       <section className="section">

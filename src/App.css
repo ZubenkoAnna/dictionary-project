@@ -15,7 +15,8 @@
 }
 
 header {
-  margin-top: -190px;
+  max-width: 960px;
+  margin: -190px auto 0 auto;
 }
 
 footer {

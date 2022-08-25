@@ -1,15 +1,22 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Result from "./Result";
+import Photos from "./Photos";
 
 import "./Search.css";
 
 export default function Search() {
   let [keyworld, setKeyword] = useState(null);
   let [result, setResult] = useState(null);
+  let [photo, setPhoto] = useState(null);
 
-  function handelResponse(response) {
+  function handelWordResponse(response) {
     setResult(response.data[0]);
+  }
+
+  function handelPhotoResponse(response) {
+    console.log(response.data.photos);
+    setPhoto(response.data);
   }
 
   function searchWord(event) {
@@ -18,7 +25,14 @@ export default function Search() {
     // documentation https://dictionaryapi.dev/
 
     let apiURL = `https://api.dictionaryapi.dev/api/v2/entries/en/${keyworld}`;
-    axios.get(apiURL).then(handelResponse);
+    axios.get(apiURL).then(handelWordResponse);
+
+    let pexelAPIKey =
+      "563492ad6f91700001000001ea1a0aeb164c403394d3571f4603852d";
+    let pexelApiURL = `https://api.pexels.com/v1/search?query=${keyworld}&per_page=6`;
+    axios
+      .get(pexelApiURL, { headers: { Authorization: `Bearer ${pexelAPIKey}` } })
+      .then(handelPhotoResponse);
   }
 
   function handelSubmitWord(event) {
@@ -52,6 +66,7 @@ export default function Search() {
         </form>
       </div>
       <Result results={result} />
+      <Photos photo={photo} />
     </div>
   );
 }
